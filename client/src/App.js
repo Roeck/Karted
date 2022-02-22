@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 // import { useSelector, useDispatch } from 'react-redux';
 import HomeContainer from './containers/HomeContainer';
 import ProductContainer from './containers/ProductContainer';
+import CartContainer from './containers/CartContainer';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <div className='home-content'>
           <main className='main'>
             <Route path='/products/:id' component={ProductContainer} />
+            <Route path='/cart/:id?' component={CartContainer} />
             <Route path='/' exact component={HomeContainer} />
           </main>
         </div>
