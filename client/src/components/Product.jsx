@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import Rating from '../Rating';
+// import { addToList } from '../../actions/listActions';
 import { useDispatch } from 'react-redux';
 
 const Product = props => {
   const product = props.product;
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => {
-    dispatch(addToCart(product, 1));
+  const addToListHandler = () => {
+    dispatch(addToList(product, 1));
   };
 
   return (
@@ -19,12 +21,9 @@ const Product = props => {
         <Link to={`/products/${product.id}`}>{product.name}</Link>
       </div>
       <div className='product-brand'>{product.brand}</div>
-      <div className='product-price'>
-        ${product.price}
-        <button onClick={addToCartHandler} className='button primary' disabled={product.countInStock < 1}>
-          {product.countInStock > 0 ? 'Add To Cart' : 'Out Of Stock'}
-        </button>
-      </div>
+      {/* <div className='product-rating'>
+        <Rating value={product.rating} text={product.numReviews + ' Reviews'} />
+      </div> */}
     </div>
   );
 };
