@@ -18,3 +18,16 @@ export const addToCart = (product, qty) => (dispatch, getState) => {
   });
   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 };
+
+export const editCartItem = (product, qty) => (dispatch, getState) => {
+  const cartItems = getState().cart.cartItems.slice();
+
+  cartItems.forEach(item => {
+    if (item.id === product.id) {
+      item.qty = qty;
+    }
+  });
+
+  dispatch({ type: 'CART_EDIT_ITEM', payload: { cartItems } });
+  localStorage.setItem('cartItems', JSON.stringify(cartItems));
+};

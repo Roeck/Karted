@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../../actions/productActions';
+import { fetchProducts } from '../actions/productActions';
 import Fade from 'react-reveal';
 import Product from './Product';
 

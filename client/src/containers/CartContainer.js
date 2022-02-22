@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart } from '../actions/cartActions';
+import { addToCart, editCartItem } from '../actions/cartActions';
 import { Link } from 'react-router-dom';
 import Fade from 'react-reveal';
 import formatCurrency from '../util';
@@ -40,6 +40,16 @@ const CartContainer = props => {
                     <div>
                       <Link to={`/products/${item.product}`}>{item.name}</Link>
                     </div>
+                    <div>
+                      Qty:
+                      <select value={item.qty} onChange={e => dispatch(editCartItem(item, Number(e.target.value)))}>
+                        {[...Array(item.countInStock).keys()].map(x => (
+                          <option key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
                   </div>
                   <div className='cart-price'>${item.price}</div>
                 </li>
@@ -47,6 +57,16 @@ const CartContainer = props => {
             )}
           </ul>
         </Fade>
+      </div>
+
+      <div className='cart-action'>
+        <h3>
+          Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):{' '}
+          {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}
+        </h3>
+        <button className='button primary full-width' disabled={cartItems.length === 0}>
+          Proceed To Checkout
+        </button>
       </div>
     </div>
   );
