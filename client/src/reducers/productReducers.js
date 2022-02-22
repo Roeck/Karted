@@ -1,22 +1,25 @@
-export const productListReducer = (state = { products: [] }, action) => {
+export const productsReducer = (
+  state = {
+    products: [],
+    success: true,
+  },
+  action
+) => {
   switch (action.type) {
     case 'FETCH_PRODUCTS':
       return {
+        ...state,
         products: action.payload,
+        filteredProducts: action.payload,
       };
-
-    default:
-      return state;
-  }
-};
-
-export const productDetailsReducer = (state = { product: {} }, action) => {
-  switch (action.type) {
+   
+    // See Details of a Product
     case 'GET_PRODUCT':
       return {
+        ...state,
         product: action.payload,
       };
-
+   
     default:
       return state;
   }

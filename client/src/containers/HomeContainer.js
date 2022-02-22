@@ -1,41 +1,13 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchProducts } from '../actions/productActions';
+import React from 'react';
+import Products from '../components/Products';
 
-const HomeContainer = props => {
-  const productList = useSelector(state => state.productList);
-  const { products } = productList;
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-    return () => {
-      //
-    };
-  }, []);
-
+const HomeContainer = () => {
   return (
-    <div>
-      {!products ? (
-        <div>Loading...</div>
-      ) : (
-        <ul className='products'>
-          {products.map(product => (
-            <li key={product.id}>
-              <div className='product'>
-                <Link to={`/products/${product.id}`}>
-                  <img className='product-image' src={product.image} alt='product' />
-                </Link>
-                <div className='product-name'>
-                  <Link to={`/products/${product.id}`}>{product.name}</Link>
-                </div>
-                <div className='product-brand'>{product.brand}</div>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
+    <div className='home-content'>
+      <div className='main-content'>
+        <hr />
+        <Products />
+      </div>
     </div>
   );
 };
