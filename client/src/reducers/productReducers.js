@@ -1,6 +1,7 @@
 export const productsReducer = (
   state = {
     products: [],
+    product: [],
     success: true,
   },
   action

@@ -10,6 +10,16 @@ const ProductContainer = props => {
   const productDetails = useSelector(state => state.products);
   const { product, success: productSaveSuccess } = productDetails;
 
+  useEffect(() => {
+    if (productSaveSuccess) {
+      productDetails.success = false;
+    }
+    dispatch(detailsProduct(props.match.params.id));
+    return () => {
+      //
+    };
+  }, [dispatch, productDetails.success, productSaveSuccess, qty, props.match.params.id]);
+
   const handleAddToCart = () => {
     dispatch(addToCart(product, qty));
     props.history.push('/cart');
@@ -35,6 +45,9 @@ const ProductContainer = props => {
                   <h4>{product.name}</h4>
                 </li>
                 <li>
+                  Price:<b> ${product.price}</b>
+                </li>
+                <li>
                   Description:
                   <div>{product.description}</div>
                 </li>
@@ -42,6 +55,7 @@ const ProductContainer = props => {
             </div>
             <div className='details-action'>
               <ul>
+                <li>Price: ${product.price}</li>
                 <li>Status: {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</li>
                 {product.countInStock > 0 ? (
                   <li>
@@ -73,8 +87,8 @@ const ProductContainer = props => {
               </ul>
             </div>
           </div>
-        </>
-      )}
+          </>
+        )}
     </div>
   );
 };
