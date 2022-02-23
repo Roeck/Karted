@@ -1,14 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import HomeContainer from './containers/HomeContainer';
 import ProductContainer from './containers/ProductContainer';
 import CartContainer from './containers/CartContainer';
 
 function App() {
-  const dispatch = useDispatch();
-  const { products } = useSelector(state => state.products);
   const { cartItems } = useSelector(state => state.cart);
 
   return (
