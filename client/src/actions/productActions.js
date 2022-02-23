@@ -11,3 +11,15 @@ export const detailsProduct = productId => dispatch => {
     .then(res => res.json())
     .then(product => dispatch({ type: 'GET_PRODUCT', payload: product }));
 };
+
+export const saveProductReview = (productId, review) => dispatch => {
+  fetch(`${BASE_URL}/products/${productId}/reviews`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ review }),
+  })
+    .then(res => res.json())
+    .then(review => dispatch({ type: 'SAVE_PRODUCT_REVIEW', payload: review, success: true }));
+};
