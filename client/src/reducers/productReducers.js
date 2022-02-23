@@ -20,6 +20,14 @@ export const productsReducer = (
         ...state,
         product: action.payload,
       };
+    
+    // Create a Product Review and Save It
+    case 'SAVE_PRODUCT_REVIEW':
+      return {
+        ...state,
+        success: true,
+        review: action.payload,
+      };
    
     default:
       return state;
