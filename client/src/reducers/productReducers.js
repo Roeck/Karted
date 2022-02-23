@@ -11,7 +11,7 @@ export const productsReducer = (
       return {
         ...state,
         products: action.payload,
-        filteredProducts: action.payload,
+        foundProducts: action.payload,
       };
    
     // See Details of a Product

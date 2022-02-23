@@ -13,14 +13,9 @@ body,
 
 body,
 input,
-button,
 select,
 textarea {
   font: 1.6rem Montserrat, Helvetica, Arial, sans-serif;
-}
-
-button {
-  font-size: 1.6rem;
 }
 
 .full-width {
@@ -56,10 +51,25 @@ button {
 }
 
 .brand a {
-  color: #ffffff;
-  font-size: 2.5rem;
-  font-weight: bold;
-  text-decoration: none;
+  position: relative;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #8e8e8e, rgb(0, 0, 0), #5e5e5e);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-text-fill-color: #f4f4f46b;
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
 }
 
 .header-links a {
@@ -69,7 +79,7 @@ button {
 }
 
 .header-links a:hover {
-  color: #575757;
+  color: #a2a2a2;
 }
 
 .home-content {
@@ -237,28 +247,62 @@ a > .rating > span:last-child {
   flex-direction: column;
 }
 
-.button {
-  padding: 1rem;
-  border: 0.1rem #808080 solid;
-  border-radius: 0.5rem;
-  cursor: pointer;
+.text-center {
+  text-align: center;
 }
+
+/* BUTTON */
 
 .button[disabled] {
   cursor: auto;
 }
 
-.button:hover {
-  border: 0.1rem #404040 solid;
+button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #555555 0, #1f1f1f 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: #0f0c17d7 0 2px 4px,#2b24394d 0 7px 13px -3px,#3a416f80 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 25px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  margin-left: 10px;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 15px;
 }
 
-.button {
-  background-color: #a2a2a2;
+button:focus {
+  box-shadow: #7e7e7e 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #838383 0 -3px 0 inset;
 }
 
-.text-center {
-  text-align: center;
+button:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #6f6f6f 0 -3px 0 inset;
+  transform: translateY(-2px);
 }
+
+button:active {
+  box-shadow: #181818 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
 
 /* CART */
 

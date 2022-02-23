@@ -53,7 +53,7 @@ const CartContainer = props => {
                           </option>
                         ))}
                       </select>
-                      <button type='button' className='button' onClick={() => removeFromCartHandler(item)}>
+                      <button type='button' onClick={() => removeFromCartHandler(item)}>
                         Delete
                       </button>
                     </div>

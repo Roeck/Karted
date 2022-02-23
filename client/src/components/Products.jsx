@@ -6,7 +6,7 @@ import Product from './Product';
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { filteredProducts } = useSelector(state => state.products);
+  const { foundProducts } = useSelector(state => state.products);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -15,11 +15,11 @@ const Products = () => {
   return (
     <div>
       <Fade bottom cascade>
-        {!filteredProducts ? (
+        {!foundProducts ? (
           <div>Loading...</div>
-        ) : (
+        ) : ( 
           <ul className='products'>
-            {filteredProducts.map(product => (
+            {foundProducts.map(product => (
               <li key={product.id}>
                 <Product product={product} />
               </li>
