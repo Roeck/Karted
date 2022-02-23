@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, editCartItem } from '../actions/cartActions';
+import { addToCart, editCartItem, removeFromCart } from '../actions/cartActions';
 import { Link } from 'react-router-dom';
 import Fade from 'react-reveal';
 import formatCurrency from '../util';
@@ -17,6 +17,10 @@ const CartContainer = props => {
       dispatch(addToCart(productId, qty));
     }
   }, [dispatch, productId, qty]);
+
+  const removeFromCartHandler = productId => {
+    dispatch(removeFromCart(productId));
+  };
 
   return (
     <div className='cart'>
@@ -49,6 +53,9 @@ const CartContainer = props => {
                           </option>
                         ))}
                       </select>
+                      <button type='button' className='button' onClick={() => removeFromCartHandler(item)}>
+                        Delete
+                      </button>
                     </div>
                   </div>
                   <div className='cart-price'>${item.price}</div>
