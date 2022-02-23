@@ -71,7 +71,7 @@ const CartContainer = props => {
           Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):{' '}
           {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}
         </h3>
-        <button className='button primary full-width' disabled={cartItems.length === 0}>
+        <button disabled={cartItems.length === 0}>
           Proceed To Checkout
         </button>
       </div>

@@ -1,12 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html {
   font-size: 62.5%; 
   box-sizing: border-box;
 }
 
-body {
-  font: 1.6rem Helvetica;
+body,
+#root {
   height: 100vh;
   margin: 0;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+  font: 1.6rem Montserrat, Helvetica, Arial, sans-serif;
+}
+
+button {
+  font-size: 1.6rem;
+}
+
+.full-width {
+  width: 100%;
 }
 
 #root {
@@ -26,12 +44,15 @@ body {
 
 .header {
   grid-area: header;
-  background-color: #1f1f1f;
+  background-color: #000000;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
+  position: sticky;
+  z-index: 25;
+  top: 0;
 }
 
 .brand a {
@@ -44,14 +65,11 @@ body {
 .header-links a {
   color: #ffffff;
   text-decoration: none;
+  padding: 1rem;
 }
 
 .header-links a:hover {
-  color: #b1b1b1;
-}
-
-.main {
-  grid-area: main;
+  color: #575757;
 }
 
 .home-content {
@@ -59,7 +77,29 @@ body {
   flex-wrap: flex;
 }
 
-/* PRODUCTS */
+.main-content {
+  grid-area: main;
+  flex: 3 60rem;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #747474;
+}
+
+/* HOMEPAGE */
 
 .products {
   display: flex;
@@ -71,9 +111,9 @@ body {
 .products li {
   list-style-type: none;
   padding: 0;
-  flex: 0 1 34rem;
+  flex: 0 1 10rem;
   margin: 1rem;
-  height: 50rem;
+  height: 34rem;
   border-bottom: 0.1rem #c0c0c0 solid;
 }
 
@@ -94,13 +134,53 @@ body {
   color: #808080;
 }
 
+.product-price {
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
 .product-image {
-  max-width: 34rem;
-  max-height: 34rem;
+  width: 20rem;
+  height: 20rem;
 }
 
 .product-rating {
   margin-bottom: 1rem;
+}
+
+/* REVIEWS */
+
+ul.review {
+  list-style-type: none;
+  padding: 0;
+}
+
+.review li {
+  margin: 1rem;
+  margin-bottom: 2rem;
+}
+
+.review li > div {
+  margin: 0.5rem;
+}
+
+/* RATING */
+
+.rating span {
+  color: #000000;
+  font-size: 1.8rem;
+  margin: 0.1rem;
+}
+
+.rating span:last-child {
+  color: #444444;
+  font-size: 1.4rem;
+}
+
+a > .rating > span:last-child {
+  color: #6f6f6f;
 }
 
 /* PRODUCT DETAILS */
@@ -164,12 +244,20 @@ body {
   cursor: pointer;
 }
 
+.button[disabled] {
+  cursor: auto;
+}
+
 .button:hover {
   border: 0.1rem #404040 solid;
 }
 
-.button.primary {
+.button {
   background-color: #a2a2a2;
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* CART */
@@ -225,21 +313,46 @@ body {
   flex: 8 1;
 }
 
-/* FOOTER */
+.cart-price {
+  flex: 1 1;
+  font-size: 2.5rem;
+  text-align: right;
+}
 
-.footer {
-  grid-area: footer;
-  background-color: #1f1f1f;
-  color: #ffffff;
+/* FORM */
+
+.form {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
-a {
-  text-decoration: none;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem #f0f0f0 solid;
+  border-radius: 0.5rem;
+  list-style-type: none;
 }
 
-a:hover {
-  color: #b1b1b1;
+.form-container li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
+
+input {
+  padding: 1rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+}
+
+
+
+
+
+

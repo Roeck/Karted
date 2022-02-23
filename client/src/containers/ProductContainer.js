@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { detailsProduct } from '../actions/productActions';
+import { detailsProduct, saveProductReview } from '../actions/productActions';
+import Rating from '../components/Rating';
 import { addToCart } from '../actions/cartActions';
 
 const ProductContainer = props => {
   const dispatch = useDispatch();
   const [qty, setQty] = useState(1);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState('');
   const productDetails = useSelector(state => state.products);
   const { product, success: productSaveSuccess } = productDetails;
 
   useEffect(() => {
     if (productSaveSuccess) {
+      setRating(1);
+      setComment('');
       productDetails.success = false;
     }
     dispatch(detailsProduct(props.match.params.id));
@@ -19,6 +24,16 @@ const ProductContainer = props => {
       //
     };
   }, [dispatch, productDetails.success, productSaveSuccess, qty, props.match.params.id]);
+
+  const submitHandler = e => {
+    e.preventDefault();
+    dispatch(
+      saveProductReview(props.match.params.id, {
+        rating: rating,
+        comment: comment,
+      })
+    );
+  };
 
   const handleAddToCart = () => {
     dispatch(addToCart(product, qty));
@@ -43,6 +58,11 @@ const ProductContainer = props => {
               <ul>
                 <li>
                   <h4>{product.name}</h4>
+                </li>
+                <li>
+                  <a href='#reviews'>
+                    <Rating value={product.rating} text={product.numReviews + ' Reviews'} />
+                  </a>
                 </li>
                 <li>
                   Price:<b> ${product.price}</b>
@@ -77,7 +97,7 @@ const ProductContainer = props => {
                 )}
                 <li>
                   {product.countInStock > 0 ? (
-                    <button onClick={handleAddToCart} className='button primary'>
+                    <button onClick={handleAddToCart}>
                       Add To Cart
                     </button>
                   ) : (
@@ -87,8 +107,58 @@ const ProductContainer = props => {
               </ul>
             </div>
           </div>
-          </>
-        )}
+          <div className='content-margined'>
+            <hr />
+            <h2>Reviews</h2>
+            {!product.reviews ? (
+              <div>There are no reviews</div>
+            ) : (
+              <div>
+                <ul className='review' id='reviews'>
+                  {product.reviews.map(review => (
+                    <li key={review.id}>
+                      <div>
+                        {review.name} - {review.created_at.substring(0, 10)}
+                      </div>
+
+                      <div>
+                        <Rating value={review.rating} />
+                      </div>
+                      <div>{review.comment}</div>
+                    </li>
+                  ))}
+                  <li>
+                    <h3>Add A Review</h3>
+                      <form onSubmit={submitHandler}>
+                        <ul className='form-container'>
+                          <li>
+                            <label htmlFor='rating'>Rating</label>
+                            <select name='rating' id='rating' value={rating} onChange={e => setRating(e.target.value)}>
+                              <option value='1'>1 - Poor</option>
+                              <option value='2'>2 - Fair</option>
+                              <option value='3'>3 - Good</option>
+                              <option value='4'>4 - Very Good</option>
+                              <option value='5'>5 - Excellent</option>
+                            </select>
+                          </li>
+                          <li>
+                            <label htmlFor='comment'>Comment</label>
+                            <textarea name='comment' value={comment} onChange={e => setComment(e.target.value)} />
+                          </li>
+                          <li>
+                            <button type='submit'>
+                              Submit Comment
+                            </button>
+                          </li>
+                        </ul>
+                      </form>
+                  </li>
+                </ul>
+              </div>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 };
