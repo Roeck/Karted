@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { detailsProduct, saveProductReview } from '../actions/productActions';
 import Rating from '../components/Rating';
+import Button from '../components/Button';
 import { addToCart } from '../actions/cartActions';
 
 const ProductContainer = props => {
@@ -97,9 +98,7 @@ const ProductContainer = props => {
                 )}
                 <li>
                   {product.countInStock > 0 ? (
-                    <button onClick={handleAddToCart}>
-                      Add To Cart
-                    </button>
+                  <Button onClick={handleAddToCart}>Add To Cart</Button>
                   ) : (
                     <div></div>
                   )}
@@ -146,9 +145,9 @@ const ProductContainer = props => {
                             <textarea name='comment' value={comment} onChange={e => setComment(e.target.value)} />
                           </li>
                           <li>
-                            <button type='submit'>
+                            <Button type='submit'>
                               Submit Comment
-                            </button>
+                            </Button>
                           </li>
                         </ul>
                       </form>

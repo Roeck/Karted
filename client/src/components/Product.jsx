@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Button from './Button';
 import Rating from './Rating';
 import { addToCart } from '../actions/cartActions';
 import { useDispatch } from 'react-redux';
@@ -23,9 +24,9 @@ const Product = props => {
       <div className='product-brand'>{product.brand}</div>
       <div className='product-price'>
         ${product.price}
-        <button onClick={addToCartHandler} disabled={product.countInStock < 1}>
+        <Button onClick={addToCartHandler} disabled={product.countInStock < 1}>
           {product.countInStock > 0 ? 'Add To Cart' : 'Out Of Stock'}
-        </button>
+        </Button>
       </div>
       <div className='product-rating'>
         <Rating value={product.rating} text={product.numReviews + ' Reviews'} />

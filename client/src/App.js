@@ -6,6 +6,9 @@ import HomeContainer from './containers/HomeContainer';
 import ProductContainer from './containers/ProductContainer';
 import CartContainer from './containers/CartContainer';
 
+import Header from './components/Header';
+import Footer from './components/Footer';
+
 function App() {
   const { cartItems } = useSelector(state => state.cart);
 
@@ -13,7 +16,7 @@ function App() {
     <BrowserRouter>
       <div className='grid-container'>
         {/* Header Section */}
-        <header className='header'>
+        <Header>
           <div className='brand'>
             <Link to='/'>Karted</Link>
           </div>
@@ -22,7 +25,7 @@ function App() {
               Cart {cartItems.length > 0 ? `(Items: ${cartItems.reduce((a, c) => a + c.qty, 0)})` : 'is empty'}
             </Link>
           </div>
-        </header>
+        </Header>
 
         {/* Main Content Section */}
         <div className='content'>
@@ -34,7 +37,7 @@ function App() {
         </div>
 
         {/* Footer */}
-        <footer className='footer'>Copyright &#169; KARTED</footer>
+        <Footer>Copyright &#169; <a href="https://github.com/Roeck/Karted">KARTED</a></Footer>
       </div>
     </BrowserRouter>
   );

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, editCartItem, removeFromCart } from '../actions/cartActions';
 import { Link } from 'react-router-dom';
 import Fade from 'react-reveal';
+import Button from '../components/Button';
 import formatCurrency from '../util';
 
 const CartContainer = props => {
@@ -53,9 +54,9 @@ const CartContainer = props => {
                           </option>
                         ))}
                       </select>
-                      <button type='button' onClick={() => removeFromCartHandler(item)}>
+                      <Button onClick={() => removeFromCartHandler(item)}>
                         Delete
-                      </button>
+                      </Button>
                     </div>
                   </div>
                   <div className='cart-price'>${item.price}</div>
@@ -71,9 +72,9 @@ const CartContainer = props => {
           Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items):{' '}
           {formatCurrency(cartItems.reduce((a, c) => a + c.price * c.qty, 0))}
         </h3>
-        <button disabled={cartItems.length === 0}>
+        <Button disabled={cartItems.length === 0}>
           Proceed To Checkout
-        </button>
+        </Button>
       </div>
     </div>
   );
