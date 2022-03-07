@@ -1,7 +1,6 @@
 import React from 'react';
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToCart, editCartItem, removeFromCart } from '../actions/cartActions';
+import { editCartItem, removeFromCart } from '../actions/cartActions';
 import { Link } from 'react-router-dom';
 import Fade from 'react-reveal';
 import Button from '../components/Button';
@@ -10,15 +9,7 @@ import formatCurrency from '../util';
 const CartContainer = props => {
   const dispatch = useDispatch();
   const { cartItems } = useSelector(state => state.cart);
-  const productId = props.match.params.id;
-  const qty = props.location.search ? Number(props.location.search.split('=')[1]) : 1;
-
-  useEffect(() => {
-    if (productId) {
-      dispatch(addToCart(productId, qty));
-    }
-  }, [dispatch, productId, qty]);
-
+  
   const removeFromCartHandler = productId => {
     dispatch(removeFromCart(productId));
   };

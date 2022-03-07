@@ -8,6 +8,7 @@ import CartContainer from './containers/CartContainer';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Brand from './components/Brand';
 
 function App() {
   const { cartItems } = useSelector(state => state.cart);
@@ -17,9 +18,9 @@ function App() {
       <div className='grid-container'>
         {/* Header Section */}
         <Header>
-          <div className='brand'>
-            <Link to='/'>Karted</Link>
-          </div>
+          <Link to="/">
+            <Brand>Karted</Brand>
+          </Link>
           <div className='header-links'>
             <Link to='/cart'>
               Cart {cartItems.length > 0 ? `(Items: ${cartItems.reduce((a, c) => a + c.qty, 0)})` : 'is empty'}

@@ -8,6 +8,7 @@ const Products = () => {
   const dispatch = useDispatch();
   const { foundProducts } = useSelector(state => state.products);
 
+  // Side effect for rendering submitted review on homepage
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);

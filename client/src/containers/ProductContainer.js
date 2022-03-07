@@ -14,6 +14,7 @@ const ProductContainer = props => {
   const productDetails = useSelector(state => state.products);
   const { product, success: productSaveSuccess } = productDetails;
 
+  // Side effect for saving and rendering reviews
   useEffect(() => {
     if (productSaveSuccess) {
       setRating(1);
