@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 
 const Header = styled.header`
     grid-area: header;
@@ -11,9 +11,5 @@ const Header = styled.header`
     position: sticky;
     z-index: 25;
     top: 0;
-
-    ${props => props.fontSize? css`
-    font-size: props.fontSize;             
-`:''}
 `
 export default Header;

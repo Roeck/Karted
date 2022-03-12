@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Brand = styled.div`
   position: relative;
@@ -21,10 +21,6 @@ const Brand = styled.div`
     background-position: 500%;
   }
 }
-
-  ${props => props.fontSize? css`
-        font-size: props.fontSize;             
-`:''}
 `
 
 export default Brand;

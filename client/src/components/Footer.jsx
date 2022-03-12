@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components'
+import styled from 'styled-components'
 
 const Footer = styled.footer`
   grid-area: footer;
@@ -7,10 +7,6 @@ const Footer = styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ${props => props.fontSize? css`
-          font-size: props.fontSize;             
-`:''}
 `
 export default Footer;
 

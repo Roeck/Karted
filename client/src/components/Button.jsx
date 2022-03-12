@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 const Button = styled.button`
    align-items: center;
@@ -44,10 +44,6 @@ const Button = styled.button`
         box-shadow: #181818 0 3px 7px inset;
         transform: translateY(2px);
     } 
-
-  ${props => props.fontSize ? css`
-          font-size: props.fontSize;             
-`: ''}
 `
 
 export default Button;
